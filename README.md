@@ -1,4 +1,4 @@
-Unscented Kalman Filters
+Project 2, Term 2: Unscented Kalman Filters
 =======================
 
 ### Final Result
@@ -27,7 +27,7 @@ same data file the simulator uses for Dataset 1.**
 
 Using Dataset 1, the RMSE is well under the target values for X, Y, VX and VY:
 
-![](media/RMSE.png)
+![](media/RMSE1.png)
 
 Using Dataset 2, the RMSE is also below target on all values except VY:
 

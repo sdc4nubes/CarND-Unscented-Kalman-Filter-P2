@@ -287,9 +287,11 @@ void UKF::UpdateMeasurement(MeasurementPackage meas_package) {
     for (int i = 0; i < 2 * n_aug_ + 1; i++) {
         VectorXd z_diff = z_sig.col(i) - z_pred;
         S = S + weights_(i) * z_diff * z_diff.transpose();
-
         VectorXd x_diff = Xsig_pred_.col(i) - x_;
-        x_diff(3) = remainder(x_diff(3), 2.0 * M_PI); // normalize angle
+        // normalize angle
+        if (meas_package.sensor_type_ == meas_package.RADAR) {
+            x_diff(3) = remainder(x_diff(3), 2.0 * M_PI);
+        }
         Tc = Tc + weights_(i) * x_diff * z_diff.transpose();
     }
     //add measurement noise covariance matrix

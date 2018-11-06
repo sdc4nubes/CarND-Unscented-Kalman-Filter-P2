@@ -1,11 +1,7 @@
 Unscented Kalman Filters
 =======================
 
-### Introduction
-
-Because this was my second serious C++ project, it was much less daunting.
-But, since I'm far from an expert, I needed the MyCodeBits project to help me
-tie lesson 7 together.
+### Final Result
 
 ![](media/Unscented_Kalman.gif)
 
@@ -13,7 +9,7 @@ tie lesson 7 together.
 
 #### Code must compile without errors using cmake and make.
 
-My code compiles without errors; however it generates numerous warnings. To correct this issue, I had to modify the following line of CMakeLists.txt:
+The code compiles without errors; however it generates numerous warnings. To correct this issue, CMakeLists.txt was modified as follows:
 
 | From:                                | To:                                     |
 |--------------------------------------|-----------------------------------------|
@@ -33,39 +29,32 @@ Using Dataset 1, the RMSE is well under the target values for X, Y, VX and VY:
 
 ![](media/RMSE.png)
 
-Dataset
-
 Using Dataset 2, the RMSE is also below target on all values except VY:
 
 ![](media/RMSE2.png)
-
-Dataset
 
 ### Follows the Correct Algorithm
 
 **Your Sensor Fusion algorithm follows the general processing flow as taught in
 the preceding lessons.**
 
-Lesson 7 formed the baseline and foundation for my Sensor Fusion
-Algorithm. My coding follows the UKF Roadmap:
+The Sensor Fusion algorithm follows the UKF Roadmap as described in the Unscented Kalman Filters lesson of Udacity's Self-Driving Car Engineer Nanodegree Program, Part 2 -  Sensor Fusion, Localization and Control:
 
 ![](media/UKF_Roadmap.png)
 
 **Your Kalman Filter algorithm handles the first measurements appropriately.**
 
-My algorithm uses the first measurements to initialize the state vector. I
-initialized the state vector at the beginning of the UKD::ProcessMeasurement function.
+The algorithm uses the first measurements to initialize the state vector. The state vector is initialized at the beginning of the UKD::ProcessMeasurement function.
 
 **Your Kalman Filter algorithm first predicts then updates.**
 
-Upon receiving a measurement after the first, my algorithm predicts object
+Upon receiving a measurement after the first, the algorithm predicts object
 position to the current timestamp and then updates the prediction using the new
 measurement.
 
 #### Your Kalman Filter can handle radar and lidar measurements.
 
-My algorithm sets up the appropriate matrices given the type of measurement and
-calls the correct measurement function for a given sensor type.
+The algorithm calls the same function for both radar and lidar measurements; however, it sets up the appropriate matrices given the type of measurement.
 
 ### Code Efficiency
 

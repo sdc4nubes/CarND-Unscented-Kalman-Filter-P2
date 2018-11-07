@@ -29,7 +29,7 @@ when using the file: "obj_pose-laser-radar-synthetic-input.txt" which is the
 same data file the simulator uses for Dataset 1.**
 
 -------------------
-##### Dataset 1 (Radar and Laser)
+##### Dataset 1 (Radar and Lidar)
 RMSE is well under the target values for X, Y, VX and VY:
 
 ![](media/RMSE1.png)

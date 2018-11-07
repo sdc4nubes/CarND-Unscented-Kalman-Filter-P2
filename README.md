@@ -35,7 +35,7 @@ RMSE is well under the target values for X, Y, VX and VY:
 ![](media/RMSE1.png)
 
 -------------------
-##### Dataset 2 (Radar and Laser)
+##### Dataset 2 (Radar and Lidar)
 RMSE is below the target values for X, Y and VX:
 
 ![](media/RMSE2.png)
@@ -47,13 +47,13 @@ RMSE is above target values for X, Y and VY:
 ![](media/RMSE1Radar.png)
 
 -------------------
-##### Dataset 1 (Laser only)
+##### Dataset 1 (Lidar only)
 RMSE is above target values for X and VX:
 
-![](media/RMSE1Laser.png)
+![](media/RMSE1Lidar.png)
 
 -------------------
-##### Dataset 1 (Radar and Laser - Extended Kalman)
+##### Dataset 1 (Radar and Lidar - Extended Kalman)
 Extended Kalman RMSE values are worse than Unscented Kalman values for X, Y, VX and VY:
 
 ![](media/RMSE1Ext.png)

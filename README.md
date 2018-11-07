@@ -58,6 +58,8 @@ Extended Kalman RMSE values are worse than Unscented Kalman values for X, Y, VX 
 
 ![](media/RMSE1Ext.png)
 
+---------------
+
 Follows the Correct Algorithm
 -----------------------------
 

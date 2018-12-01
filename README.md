@@ -11,13 +11,7 @@ Compiling
 
 #### Code must compile without errors using cmake and make.
 
-The code compiles without errors; however it generates numerous warnings. To correct this issue, CMakeLists.txt was modified as follows:
-
-| From:                                | To:                                     |
-|--------------------------------------|-----------------------------------------|
-| set(CMAKE_CXX_FLAGS "\${CXX_FLAGS}") | set(CMAKE_CXX_FLAGS "\${CXX_FLAGS} -w") |
-
-After the above modification, the [cmake] and [make] output looks good:
+The code compiles without errors:
 
 ![](media/Compile.png)
 

@@ -271,6 +271,6 @@ void UKF::UpdateMeasurement(MeasurementPackage meas_package) {
     // Calculating NIS
     string sensor_type = meas_package.sensor_type_ == meas_package.RADAR ? "RADAR" : "LASER";
     VectorXd nis = z_diff.transpose() * S.inverse() * z_diff;
-    cout << sensor_type << " measurement : " << nis << endl;
+    // cout << sensor_type << " measurement : " << nis << endl;
 }
 

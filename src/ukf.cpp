@@ -1,12 +1,10 @@
 #include "ukf.h"
 #include "Eigen/Dense"
 #include <iostream>
-
 using namespace std;
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using std::vector;
-
 /**
  * Initializes Unscented Kalman filter
  * This is scaffolding, do not modify
@@ -14,55 +12,40 @@ using std::vector;
 UKF::UKF() {
     // if this is false, laser measurements will be ignored (except during init)
     use_laser_ = true;
-
     // if this is false, radar measurements will be ignored (except during init)
     use_radar_ = true;
-
     // initial state vector
     x_ = VectorXd(5);
-
     // initial covariance matrix
     P_ = MatrixXd(5, 5);
-
     // Process noise standard deviation longitudinal acceleration in m/s^2
     std_a_ = 1.5;
-
     // Process noise standard deviation yaw acceleration in rad/s^2
     std_yawdd_ = 0.6;
-
     //DO NOT MODIFY measurement noise values below these are provided by the sensor manufacturer.
     // Laser measurement noise standard deviation position1 in m
     std_laspx_ = 0.15;
-
     // Laser measurement noise standard deviation position2 in m
     std_laspy_ = 0.15;
-
     // Radar measurement noise standard deviation radius in m
     std_radr_ = 0.3;
-
     // Radar measurement noise standard deviation angle in rad
     std_radphi_ = 0.03;
-
     // Radar measurement noise standard deviation radius change in m/s
     std_radrd_ = 0.3;
     //DO NOT MODIFY measurement noise values above these are provided by the sensor manufacturer.
-
     // State dimension
     n_x_ = 5;
-
     // Augmented state dimension
     n_aug_ = 7;
-
     // Sigma point spreading parameter
     lambda_ = 3 - n_aug_;
-
     // state covariance matrix
     P_   << 1, 0, 0, 0, 0,
           0, 1, 0, 0, 0,
           0, 0, 1, 0, 0,
           0, 0, 0, 1, 0,
           0, 0, 0, 0, 1;
-
     // Weight Metrix
     weights_ = VectorXd(2 * n_aug_ + 1);
     double weight_0 = lambda_ / (lambda_ + n_aug_);
@@ -75,14 +58,11 @@ UKF::UKF() {
     Q_ = MatrixXd(2, 2);
     Q_ << std_a_ * std_a_, 0                      ,
           0              , std_yawdd_ * std_yawdd_;
-
     MatrixXd Xsig_pred_ = MatrixXd(n_x_, 2 * n_aug_ + 1);
-
     // Measurement Noises
     R_laser_ = MatrixXd(2, 2);
     R_laser_ << std_laspx_ * std_laspx_, 0                      ,
                 0                      , std_laspy_ * std_laspy_;
-
     R_radar_ = MatrixXd(3, 3);
     R_radar_ << std_radr_ * std_radr_, 0                        , 0                      ,
                 0                    , std_radphi_ * std_radphi_, 0                      ,
@@ -90,7 +70,6 @@ UKF::UKF() {
 }
 
 UKF::~UKF() {}
-
 /**
  * @param {MeasurementPackage} meas_package The latest measurement data of
  * either radar or laser.
@@ -114,7 +93,6 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
         is_initialized_ = true;
         return;
     }
-
     if ((use_radar_ && meas_package.sensor_type_ == meas_package.RADAR) ||
         (use_laser_ && meas_package.sensor_type_ == meas_package.LASER)) {
         double delta_t = (meas_package.timestamp_ - previous_timestamp_) / 1000000.0;
@@ -154,7 +132,6 @@ void UKF::GenerateStateSigmaPoints(double delta_t) {
     Xsig_aug.block<7, 1>(0, 0) = x_aug;
     Xsig_aug.block<7, 7>(0, 1) = x_replicated + sqaure_root;
     Xsig_aug.block<7, 7>(0, 8) = x_replicated - sqaure_root;
-
     // Find State Sigma Points
     Xsig_pred_ = MatrixXd(n_x_, 2 * n_aug_ + 1);
     for (int i = 0; i < 2 * n_aug_ + 1; i++) {

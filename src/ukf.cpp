@@ -1,4 +1,4 @@
-#include "ukf.h"
+Dian#include "ukf.h"
 #include "Eigen/Dense"
 #include <iostream>
 
@@ -133,22 +133,6 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
 void UKF::Prediction(double delta_t) {
     GenerateStateSigmaPoints(delta_t);
     PredictMeanAndCovariance();
-}
-
-/**
- * Updates the state and the state covariance matrix using a laser measurement.
- * @param {MeasurementPackage} meas_package
- */
-void UKF::UpdateLidar(MeasurementPackage meas_package) {
-    UpdateMeasurement(meas_package);
-}
-
-/**
- * Updates the state and the state covariance matrix using a radar measurement.
- * @param {MeasurementPackage} meas_package
- */
-void UKF::UpdateRadar(MeasurementPackage meas_package) {
-    UpdateMeasurement(meas_package);
 }
 
 void UKF::GenerateStateSigmaPoints(double delta_t) {
